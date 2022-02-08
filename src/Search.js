@@ -163,6 +163,7 @@ function Search() {
               <th scope="col">#</th>
               <th scope="col">Img</th>
               <th scope="col">Title</th>
+              <br />
               <th scope="col">Description</th>
             </tr>
           </thead>
@@ -171,7 +172,6 @@ function Search() {
               <tr>
                 <th scope="row">~</th>
                 <td>
-                  {" "}
                   <img
                     src={
                       book.volumeInfo?.imageLinks?.smallThumbnail

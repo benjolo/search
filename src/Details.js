@@ -34,14 +34,13 @@ function Details() {
       </div>
 
       <div class="card-group">
-        <div class="card center2">
-          <img
+        <div class="card text-white bg-dark mb-3">
+          <img className=""
             src={
               res.volumeInfo?.imageLinks?.thumbnail
                 ? res.volumeInfo?.imageLinks?.thumbnail
                 : "https://geodis.com/my/sites/default/files/styles/max_800x800/public/2018-06/404.png?itok=W39cp7-6"
             }
-            className="card-img-top"
           />
         </div>
         <div class="card text-white bg-dark mb-3">
