@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-const Search = () => {
+function Search() {
   const [query, setQuery] = useState(null);
   const [res, setRes] = useState(null);
   const [bottone, setBottone] = useState(false);
@@ -26,29 +25,39 @@ const Search = () => {
   if (!res)
     return (
       <div className="topnav">
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={(text) => {
-            setQuery(text.target.value);
-          }}
-        ></input>
+        <div class="form-row center2">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search a book"
+              onChange={(text) => {
+                setQuery(text.target.value);
+              }}
+            ></input>
+          </div>
+        </div>
         <span
           className="d-inline-block"
           tabIndex="0"
           data-toggle="tooltip"
           title="Disabled tooltip"
-        >
+        ></span>
+        <div className="center">
           <button
             onClick={() => setBottone(!bottone)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             Visualizza Griglia
           </button>
+        </div>
+        <div className="center">
           <button
             onClick={() => setMaxRes(5)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             5
@@ -56,6 +65,7 @@ const Search = () => {
           <button
             onClick={() => setMaxRes(10)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             10
@@ -63,6 +73,7 @@ const Search = () => {
           <button
             onClick={() => setMaxRes(15)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             15
@@ -70,41 +81,51 @@ const Search = () => {
           <button
             onClick={() => setMaxRes(20)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             20
           </button>
-        </span>
+        </div>
       </div>
     );
 
   return (
     <>
       <div className="topnav">
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={(text) => {
-            setQuery(text.target.value);
-            console.log(query, res);
-          }}
-        ></input>
+        <div class="form-row center2">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search a book"
+              onChange={(text) => {
+                setQuery(text.target.value);
+              }}
+            ></input>
+          </div>
+        </div>
         <span
           className="d-inline-block"
           tabIndex="0"
           data-toggle="tooltip"
           title="Disabled tooltip"
-        >
+        ></span>
+        <div className="center">
           <button
             onClick={() => setBottone(!bottone)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             Visualizza Griglia
           </button>
+        </div>
+        <div className="center">
           <button
             onClick={() => setMaxRes(5)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             5
@@ -112,6 +133,7 @@ const Search = () => {
           <button
             onClick={() => setMaxRes(10)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             10
@@ -119,31 +141,37 @@ const Search = () => {
           <button
             onClick={() => setMaxRes(15)}
             className="btn btn-primary"
+            class="btn btn-success"
             type="button"
           >
             15
           </button>
           <button
             onClick={() => setMaxRes(20)}
+            class="btn btn-success"
             className="btn btn-primary"
             type="button"
           >
             20
           </button>
-        </span>
+        </div>
       </div>
       {bottone ? (
-        <section className="py-4 container">
-          <div className="">
-            {res.map((book) => (
-              <li
-                style={{
-                  listStyleType: "none",
-                }}
-                key={book.id}
-              >
-                <div className="col-11 col-md-6 mx-5 mb-4 card p-0 shadow">
-                  {/* <Link to="/">{book.volumeInfo?.title}</Link> */}
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Img</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          {res.map((book) => (
+            <tbody>
+              <tr>
+                <th scope="row">~</th>
+                <td>
+                  {" "}
                   <img
                     src={
                       book.volumeInfo?.imageLinks?.smallThumbnail
@@ -152,18 +180,25 @@ const Search = () => {
                     }
                     className="card-img-top"
                   />
-                  <div className="card-body">
-                    <h5 className="card-title"> {book.volumeInfo?.title} </h5>
-                    <p className="ellipsis">{book.volumeInfo?.description}</p>
-                  </div>
-                </div>
-                <br />
-              </li>
-            ))}
-          </div>
-        </section>
+                </td>
+                <td>{book.volumeInfo?.title}</td>
+                <td>{book.volumeInfo?.author}</td>
+                <td className="p ellipsis">{book.volumeInfo?.description}</td>
+                <td>
+                  <Link
+                    type="button"
+                    class="btn btn-success"
+                    to={`details/${book.id}`}
+                  >
+                    Details
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
       ) : (
-        <section className="py-4 container">
+        <section className="py-4 container blackback">
           <div className="d-flex flex-wrap">
             {res.map((book) => (
               <li
@@ -173,10 +208,9 @@ const Search = () => {
                 key={book.id}
               >
                 <div
-                  className="col-11 col-md-6 mx-5 mb-4 card p-0 shadow"
-                  style={{ width: "180px" }}
+                  className="col-14 col-md-11 mx-4 mb-4 card p-3 shadow"
+                  style={{ width: "210px" }}
                 >
-                  {/* <Link to="/">{book.volumeInfo?.title}</Link> */}
                   <img
                     src={
                       book.volumeInfo?.imageLinks?.smallThumbnail
@@ -186,8 +220,15 @@ const Search = () => {
                     className="card-img-top"
                   />
                   <div className="card-body">
-                    <h5 className="card-title"> {book.volumeInfo?.title} </h5>
-                    <p className="ellipsis">{book.volumeInfo?.description}</p>
+                    <h5 className="card-title">{book.volumeInfo?.title}</h5>
+                    <p className="p ellipsis">{book.volumeInfo?.description}</p>
+                    <Link
+                      type="button"
+                      class="btn btn-success"
+                      to={`details/${book.id}`}
+                    >
+                      Details
+                    </Link>
                   </div>
                 </div>
                 <br />
@@ -198,6 +239,6 @@ const Search = () => {
       )}
     </>
   );
-};
+}
 
 export default Search;
