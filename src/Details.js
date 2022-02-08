@@ -35,7 +35,8 @@ function Details() {
 
       <div class="card-group">
         <div class="card text-white bg-dark mb-3">
-          <img className=""
+          <img
+            className=""
             src={
               res.volumeInfo?.imageLinks?.thumbnail
                 ? res.volumeInfo?.imageLinks?.thumbnail
@@ -44,8 +45,8 @@ function Details() {
           />
         </div>
         <div class="card text-white bg-dark mb-3">
-          <div class="card-header center">{res.volumeInfo?.title}</div>
-          <div class="card-body center">
+          <div class="card-header">{res.volumeInfo?.title}</div>
+          <div class="card-body">
             <h5 class="card-title">{res.volumeInfo?.authors}</h5>
             <p class="card-text">{res.volumeInfo?.description}</p>
           </div>

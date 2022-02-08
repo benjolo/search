@@ -25,11 +25,11 @@ function Search() {
   if (!res)
     return (
       <div className="topnav">
-        <div class="form-row center2">
-          <div class="col">
+        <div className="form-row center2">
+          <div className="col">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Search a book"
               onChange={(text) => {
                 setQuery(text.target.value);
@@ -50,7 +50,7 @@ function Search() {
             class="btn btn-success"
             type="button"
           >
-            Visualizza Griglia
+            Griglia/Cards
           </button>
         </div>
         <div className="center">
@@ -118,7 +118,7 @@ function Search() {
             class="btn btn-success"
             type="button"
           >
-            Visualizza Griglia
+            Griglia/Cards
           </button>
         </div>
         <div className="center">
@@ -203,7 +203,7 @@ function Search() {
             {res.map((book) => (
               <li
                 style={{
-                  listStyleType: "none",
+                  listStyleType: "none"
                 }}
                 key={book.id}
               >
