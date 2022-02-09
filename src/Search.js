@@ -16,7 +16,6 @@ function Search() {
       )
         .then((res) => res.json())
         .then((res) => setRes(res.items));
-      console.log(res);
     }
 
     getData();
@@ -86,6 +85,14 @@ function Search() {
           >
             20
           </button>
+          <button
+            onClick={() => setMaxRes(40)}
+            className="btn btn-primary"
+            class="btn btn-success"
+            type="button"
+          >
+            40
+          </button>
         </div>
       </div>
     );
@@ -154,6 +161,14 @@ function Search() {
           >
             20
           </button>
+          <button
+            onClick={() => setMaxRes(40)}
+            className="btn btn-primary"
+            class="btn btn-success"
+            type="button"
+          >
+            40
+          </button>
         </div>
       </div>
       {bottone ? (
@@ -163,7 +178,6 @@ function Search() {
               <th scope="col">#</th>
               <th scope="col">Img</th>
               <th scope="col">Title</th>
-              <br />
               <th scope="col">Description</th>
             </tr>
           </thead>
@@ -172,6 +186,7 @@ function Search() {
               <tr>
                 <th scope="row">~</th>
                 <td>
+                  {" "}
                   <img
                     src={
                       book.volumeInfo?.imageLinks?.smallThumbnail
@@ -196,6 +211,14 @@ function Search() {
               </tr>
             </tbody>
           ))}
+          <button
+            onClick={() => setMaxRes(maxRes + 5)}
+            className="btn btn-primary"
+            class="btn btn-success"
+            type="button"
+          >
+            Show More
+          </button>
         </table>
       ) : (
         <section className="py-4 container blackback">
@@ -203,7 +226,7 @@ function Search() {
             {res.map((book) => (
               <li
                 style={{
-                  listStyleType: "none"
+                  listStyleType: "none",
                 }}
                 key={book.id}
               >
@@ -235,6 +258,14 @@ function Search() {
               </li>
             ))}
           </div>
+          <button
+            onClick={() => setMaxRes(maxRes + 5)}
+            className="btn btn-primary"
+            class="btn btn-success"
+            type="button"
+          >
+            Show More
+          </button>
         </section>
       )}
     </>
